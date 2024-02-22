@@ -30,4 +30,10 @@ justify-content: center;
     gap: 24px;
 }
 
-
+.gallery-text{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
