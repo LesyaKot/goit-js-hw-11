@@ -1,10 +1,18 @@
 export function createMarkup(images) {
+  const gallery = document.querySelector('.gallery');
 
-    const gallery = document.querySelector('.gallery');
-    
-    gallery.innerHTML = images
-    .map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => 
-    `<li class="gallery-item">
+  gallery.innerHTML = images
+    .map(
+      ({
+        webformatURL,
+        largeImageURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) =>
+        `<li class="gallery-item">
       <a href="${largeImageURL}" class="gallery-link" data-lightbox="gallery">
         <img class="gallery-image"
          src="${webformatURL}"
@@ -18,11 +26,5 @@ export function createMarkup(images) {
       </a>
     </li>`
     )
-      .join('');
-
-      if (window.simpleLightbox) {
-        window.simpleLightbox.refresh();
-      }
-
-        }
- 
+    .join('');
+}
