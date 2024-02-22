@@ -9,15 +9,16 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <section class="btn-section">
+    <form class="btn-section" autocomplete="off">
       <input type="text" id="data-search" />
-      <button type="submit" data-start>Start</button>
-    </section>
-    
+      <button type="submit" data-start>Search</button>
+    </form>
+
     <ul class="gallery"></ul>
 
-    <script type="module" src="./main.js"></script>
-    <script type="module" src="./js/pixabay-api.js"></script>
     <script type="module" src="./js/render-functions.js"></script>
+    <script type="module" src="./js/pixabay-api.js"></script>
+    <script type="module" src="./main.js"></script>
+    
   </body>
 </html>

@@ -1,12 +1,11 @@
-export function createMarkup(data) {
-    const images = data.hits.slice(0, 9);
-  
+export function createMarkup(images) {
+
+    const gallery = document.querySelector('.gallery');
+
     gallery.innerHTML = images
-      .map(({ webformatURL }) => {
-        return `<li>
-                <img src="${webformatURL}">
-                </li>`;
-      })
+
+      .map(({ webformatURL }) => `<img src="${webformatURL}" alt="Pixabay Image" />`)
       .join('');
   }
-  
+
+

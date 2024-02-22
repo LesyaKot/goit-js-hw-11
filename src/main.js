@@ -7,29 +7,44 @@ import 'izitoast/dist/css/iziToast.min.css';
 const form = document.querySelector('.btn-section');
 const input = document.querySelector('#data-search');
 const button = document.querySelector('[data-start]');
-const galleryElement = document.querySelector('.gallery');
+const gallery = document.querySelector('.gallery');
 
-galleryElement.innerHTML = '';
+gallery.innerHTML = '';
 
-form.addEventListener('submit', event => {
-    event.preventDefault();
-  
-    const inputValue = input.value.trim();
-  
-    getImagesFromPixabay(inputValue)
-      .then(data => {
-        createMarkup(data);
-      })
-      .catch(error => {
-        iziToast.error({
-          title: 'Error',
+form.addEventListener('submit', handleFormSubmit);
+
+function handleFormSubmit(event) {
+  event.preventDefault();
+
+  const inputValue = input.value.trim();
+
+  if (!inputValue) {
+    iziToast.warning({
+      title: 'Warning',
+      message: 'Please enter a search term.',
+    });
+    return;
+  }
+
+      getImagesFromPixabay(inputValue)
+    .then(data => {
+      if (data.hits.length === 0) {
+        iziToast.info({
+          title: 'Info',
           message: 'Sorry, there are no images matching your search query. Please try again!',
         });
+      } else {
+        createMarkup(data.hits);
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching images:', error);
+      iziToast.error({
+        title: 'Error',
+        message: 'An error occurred while fetching images.',
       });
-  });
-  
-
-
+    });
+}
 
 
 
