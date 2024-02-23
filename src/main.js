@@ -32,10 +32,14 @@ function handleFormSubmit(event) {
       title: 'Warning',
       message: 'Please enter a search term.',
     });
+    gallery.innerHTML = ''
     return;
+    ;
   }
 
-  loader.style.display = 'block';
+  gallery.innerHTML = '';
+
+  loader.classList.add('loader-visible');
 
   getImagesFromPixabay(inputValue)
     .then(data => {
@@ -47,7 +51,9 @@ function handleFormSubmit(event) {
         });
       } else {
         createMarkup(data.hits);
-        loader.style.display = 'none';
+
+        loader.classList.remove('loader-visible');
+
         lightbox.refresh();
       }
     })
@@ -57,5 +63,7 @@ function handleFormSubmit(event) {
         title: 'Error',
         message: 'An error occurred while fetching images.',
       });
-    });
+    })
+     loader.classList.remove('loader-visible');
+
 }

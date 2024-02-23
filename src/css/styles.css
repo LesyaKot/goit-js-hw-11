@@ -54,6 +54,10 @@ button {
   display: none;
 }
 
+.loader-visible {
+  display: block; 
+}
+
 .loader {
   transform: rotateZ(45deg);
   perspective: 1000px;
