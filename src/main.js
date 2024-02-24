@@ -64,6 +64,8 @@ function handleFormSubmit(event) {
         message: 'An error occurred while fetching images.',
       });
     })
-     loader.classList.remove('loader-visible');
-
-}
+    .finally(() => {
+      loader.classList.remove('loader-visible');
+    });
+    
+    }
